@@ -1,0 +1,4 @@
+<resources>
+    <string name="api_url">http://api.currencylayer.com/%s</string>
+    <string name="api_key">fb25be044484b44574a7ed87e4780967</string>
+</resources>
