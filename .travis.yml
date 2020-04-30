@@ -1,8 +1,4 @@
-# .travis.yml
 language: android 
-branches: 
-  only: 
-    - master 
 android: 
   components: 
     - tools 
@@ -12,14 +8,7 @@ android:
     - extra-android-m2repository 
 install:
   - bundle install
-script: 
-  - ./gradlew assembleDebug 
+before_script:
   - bundle exec danger
-before_cache: 
-  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock 
-  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/ 
-cache: 
-  directories: 
-    - $HOME/.gradle/caches/ 
-    - $HOME/.gradle/wrapper/ 
-    - $HOME/.android/build-cache 
+cache:
+  - bundler
