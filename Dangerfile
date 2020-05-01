@@ -2,7 +2,8 @@
 github.dismiss_out_of_range_messages
 
 # Make it more obvious that a PR is a work in progress and shouldn't be merged yet
-if github.pr_json["requested_reviewers"].length != 0 && if github.pr_title.include? "[WIP]"
+warn("PR is classed as Work in Progress") if github.pr_title.include? "[WIP]"
+if github.pr_json["requested_reviewers"].length != 0
   warn("レビューのリクエストはWIPを外してからしましょう。") 
 end
 
@@ -11,8 +12,8 @@ is_to_master = github.branch_for_base == 'master'
 if is_to_master
   failure "Branchのベースがdevelop_ph2/*.*.*か確認しましょう。"
 end
-is_from_develop = github.branch_for_base.match(\/develop_ph2\/[0-9]+\.[0-9]+\.[0-9])
-if !is_from_develop
+is_from_develop = !!github.branch_for_base.match(\/develop_ph2\/[0-9]+\.[0-9]+\.[0-9])
+if is_from_develop
   failure "Branchのベースがdevelop_ph2/*.*.*か確認しましょう。"
 end
 
@@ -34,6 +35,11 @@ warn("マイルストーンを設定しましょう。", sticky: false) unless h
 # note when a pr cannot be merged
 can_merge = github.pr_json["mergeable"]
 warn("このPRはまだマージできません。", sticky: false) unless can_merge
+
+# warn when there are merge commits in the diff
+if git.commits.any? { |c| c.message =~ /^Merge branch 'master'/ }
+  warn 'Please rebase to get rid of the merge commits in this PR'
+end
 
 # ktlint
 # checkstyle_format.base_path = Dir.pwd
