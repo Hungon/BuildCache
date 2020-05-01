@@ -2,11 +2,14 @@
 github.dismiss_out_of_range_messages
 
 # Make it more obvious that a PR is a work in progress and shouldn't be merged yet
-warn("PR is classed as Work in Progress") if github.pr_title.include? "[WIP]"
+if github.pr_json["requested_reviewers"].length != 0 && if github.pr_title.include? "[WIP]"
+  warn("レビューのリクエストはWIPを外してからしましょう。") 
+end
 
-# branch
-# if vsts.branch_for_base != "develop"
-# failure "Please re-submit this PR to develop, we may have already fixed your issue."
+# make sure that where branch comes from
+if !github.branch_for_base.match(/develop_ph2/[0-9]+\.[0-9]+\.[0-9]/)
+  failure "Branchのベースがdevelop_ph2/*.*.*か確認しましょう。"
+end
 
 # note when a pr's changes is extremely big 
 is_big_pr = git.lines_of_code > 5
@@ -16,16 +19,16 @@ end
 
 # ensure there is summary
 if github.pr_body.length < 5
-  warn "Please provide a summary in the Pull Request description"
+  warn "プルリクの内容を記載しましょう。"
 end
 
 # note when prs dont reference a milestone
 has_milestone = github.pr_json["milestone"] != nil
-warn("This PR does not refer to an existing milestone", sticky: false) unless has_milestone
+warn("マイルストーンを設定しましょう。", sticky: false) unless has_milestone
 
 # note when a pr cannot be merged
 can_merge = github.pr_json["mergeable"]
-warn("This PR cannot be merged yet.", sticky: false) unless can_merge
+warn("このPRはまだマージできません。", sticky: false) unless can_merge
 
 # ktlint
 # checkstyle_format.base_path = Dir.pwd
