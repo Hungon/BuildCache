@@ -11,7 +11,7 @@ is_to_master = github.branch_for_base == 'master'
 if is_to_master
   failure "Branchのベースがdevelop_ph2/*.*.*か確認しましょう。"
 end
-is_from_develop = github.branch_for_base.match(/develop_ph2/[0-9]+\.[0-9]+\.[0-9]/)
+is_from_develop = github.branch_for_base.match(\/develop_ph2\/[0-9]+\.[0-9]+\.[0-9])
 if !is_from_develop
   failure "Branchのベースがdevelop_ph2/*.*.*か確認しましょう。"
 end
