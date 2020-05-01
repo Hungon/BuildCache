@@ -41,3 +41,7 @@ warn("このPRはまだマージできません。", sticky: false) unless can_m
 if git.commits.any? { |c| c.message =~ /^Merge branch 'master'/ }
   warn 'Please rebase to get rid of the merge commits in this PR'
 end
+
+# ktlint
+# checkstyle_format.base_path = Dir.pwd
+# checkstyle_format.report 'app/build/reports/ktlint/ktlint-main.xml'
