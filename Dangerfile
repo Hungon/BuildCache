@@ -2,7 +2,7 @@
 github.dismiss_out_of_range_messages
 
 # Make it more obvious that a PR is a work in progress and shouldn't be merged yet
-if github.pr_title.include? "[WIP]" && if github.pr_json["requested_reviewers"].length != 0
+if github.pr_title.include? "[WIP]" && github.pr_json["requested_reviewers"].length != 0
   warn("レビューのリクエストはWIPを外してからしましょう。") 
 end
 
