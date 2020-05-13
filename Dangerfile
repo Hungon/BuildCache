@@ -52,11 +52,6 @@ if git.modified_files.include? ".idea/codeStyles/Project.xml"
   warn("#{github.html_link("Project.xml")}が編集されました。")
 end
 
-diff = git.diff_for_file("Gemfile.lock")
-if diff && diff.patch =~ "nokogiri"
-  warn 'Please do not add nokogiri to the project. Thank you.'
-end
-
 # ktlint
 # checkstyle_format.base_path = Dir.pwd
 # checkstyle_format.report 'app/build/reports/ktlint/ktlint-main.xml'
