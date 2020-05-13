@@ -8,5 +8,7 @@ android:
     - extra-android-m2repository 
 install:
   - bundle install
+cache:
+  - bundler
 before_script:
   - bundle exec danger
