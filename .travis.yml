@@ -9,4 +9,5 @@ android:
 install:
   - bundle install
 before_script:
+  - bundle update danger
   - bundle exec danger
