@@ -33,7 +33,7 @@ end
 # make sure that where branch comes from
 is_from_develop = github.branch_for_base.include? "develop_ph2"
 if has_milestone
-  failure("Branchのベースがdevelop_ph2/@#{milestone}か確認しましょう。") unless is_from_develop
+  failure("Branchのベースがdevelop_ph2/#{milestone}か確認しましょう。") unless is_from_develop
 else
   failure("Branchのベースがdevelop_ph2/*.*.*か確認しましょう。") unless is_from_develop
 end
