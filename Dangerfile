@@ -38,7 +38,7 @@ else
   failure("Branchのベースがdevelop_ph2/*.*.*か確認しましょう。") unless is_from_develop
 end
 
-message("@#{milestone}")
+message("mile stop: @#{milestone}")
 
 # note when a pr cannot be merged
 can_merge = github.pr_json["mergeable"]
