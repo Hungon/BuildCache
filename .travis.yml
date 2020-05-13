@@ -10,5 +10,3 @@ install:
   - bundle install
 before_script:
   - bundle exec danger
-cache:
-  - bundler
