@@ -1,0 +1,14 @@
+include ':app'
+rootProject.name = "Sample001"
+
+boolean isCiServer = System.getenv().containsKey("CI")
+
+buildCache {
+    local {
+        enabled = !isCiServer
+    }
+    remote(HttpBuildCache) {
+        url = System.getenv('BITRISE_ANDROID_CACHE_URL') ?: '/'
+        push = isCiServer
+    }
+}

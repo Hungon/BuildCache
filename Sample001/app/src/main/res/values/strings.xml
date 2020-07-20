@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Abceed</string>
+    <string name="title_detail">書籍紹介</string>
+    <string name="button_text_register_book">MyBook追加</string>
+    <string name="button_text_unregister_book">MyBookから外す</string>
+    <string name="button_text_purchase">購入</string>
+    <string name="button_text_purchased">購入済み</string>
+    <string name="text_author">著者：%s</string>
+    <string name="text_publisher">出版社：%s</string>
+
+</resources>

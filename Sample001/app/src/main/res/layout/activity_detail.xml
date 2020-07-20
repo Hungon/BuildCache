@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.trials.sample001.ui.detail.DetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_bar">
+
+            <ImageView
+                android:id="@+id/image_book_selected"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/text_book_name"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:ellipsize="end"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/font_size_medium"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/image_book_selected"
+                app:layout_constraintTop_toTopOf="@+id/image_book_selected"
+                tools:text="book name book name book name book name hello" />
+
+            <TextView
+                android:id="@+id/text_author"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:padding="2dp"
+                android:textSize="@dimen/font_size_normal"
+                app:layout_constraintStart_toStartOf="@+id/text_book_name"
+                app:layout_constraintTop_toBottomOf="@+id/text_book_name"
+                tools:text="@string/text_author" />
+
+            <TextView
+                android:id="@+id/text_publisher"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:padding="2dp"
+                android:textSize="@dimen/font_size_normal"
+                app:layout_constraintStart_toStartOf="@+id/text_book_name"
+                app:layout_constraintTop_toBottomOf="@+id/text_author"
+                tools:text="@string/text_publisher" />
+
+            <Button
+                android:id="@+id/button_register"
+                android:layout_width="@dimen/button_size_width"
+                android:layout_height="@dimen/button_size_height"
+                android:background="@drawable/selector_button01"
+                android:gravity="center"
+                android:onClick="@{viewModel.onClick}"
+                android:text="@{viewModel.isRegistered ? @string/button_text_unregister_book : @string/button_text_register_book}"
+                android:textColor="@{viewModel.isRegistered ? @color/colorButtonUnselected : @color/colorButtonSelected}"
+                android:textSize="@dimen/font_size_normal"
+                app:layout_constraintBottom_toBottomOf="@+id/image_book_selected"
+                app:layout_constraintStart_toStartOf="@+id/text_book_name"
+                app:selected="@{viewModel.isRegistered}"
+                tools:text="@string/button_text_register_book" />
+
+            <Button
+                android:id="@+id/button_purchase"
+                android:layout_width="@dimen/button_size_width"
+                android:layout_height="@dimen/button_size_height"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/shape_button01"
+                android:enabled="@{!viewModel.isPurchased}"
+                android:gravity="center"
+                android:onClick="@{viewModel.onClick}"
+                android:text="@{viewModel.isPurchased ? @string/button_text_purchased : @string/button_text_purchase}"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/font_size_normal"
+                app:layout_constraintBottom_toBottomOf="@+id/button_register"
+                app:layout_constraintStart_toEndOf="@+id/button_register"
+                tools:text="@string/button_text_purchase" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
