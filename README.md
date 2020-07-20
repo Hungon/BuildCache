@@ -14,6 +14,6 @@ Gradle will try to reuse outputs from previous builds for all builds, unless exp
 When the build cache is enabled, it will store build outputs in the Gradle user home. For configuring this directory or different kinds of build caches see Configure the Build Cache.
 
 ## Reference 
-[android-cache-fix](https://plugins.gradle.org/plugin/org.gradle.android.cache-fix)
-[Annotation processing with kotlin](https://kotlinlang.org/docs/reference/kapt.html)
-[Improving build performance of gradle](https://guides.gradle.org/performance/)
+[android-cache-fix](https://plugins.gradle.org/plugin/org.gradle.android.cache-fix)<br>
+[Annotation processing with kotlin](https://kotlinlang.org/docs/reference/kapt.html)<br>
+[Improving build performance of gradle](https://guides.gradle.org/performance/)<br>
