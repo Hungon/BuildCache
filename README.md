@@ -1,2 +1,2 @@
 # Challenge
-the project to improve my coding skill.
+the project to explorer for improving build performance.
